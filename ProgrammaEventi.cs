@@ -3,7 +3,7 @@
 public class ProgrammaEventi
 {
     public string Titolo { get; set; }
-    List<Evento> Eventi { get; set; }
+    public List<Evento> Eventi { get; set; }
 
     public ProgrammaEventi(string titolo)
     {
@@ -11,21 +11,23 @@ public class ProgrammaEventi
         Eventi = new List<Evento>();
     }
 
-    public void AggiungiEvento(Evento evento)
+    public void AggiungiEvento(Evento evento, List<Evento> lista)
     {
-        Eventi.Add(evento);
+        lista.Add(evento);
     }
 
-    public Evento InDataEventi(DateTime data)
+    public List<Evento> InDataEventi(DateTime data, List<Evento> lista)
     {
         foreach (Evento evento in Eventi)
         {
             if (evento.Data == data)
             {
-                return evento;
+               AggiungiEvento(evento, lista) ;
             }
         }
-        return null;
+
+        StampaLista(lista, data);
+        return lista;
     }
 
     public static void StampaInConsole (List<Evento> eventi)
@@ -50,5 +52,14 @@ public class ProgrammaEventi
     {
         Console.WriteLine("{0} Programma evento:", Titolo);
         StampaInConsole(Eventi);
+    }
+
+    public static void StampaLista(List<Evento> lista, DateTime data)
+    {
+        Console.WriteLine("in data {0} ci sono questi eventi:", data.ToString("dd/MM/yyyy"));
+        foreach (Evento evento in lista)
+        {
+            Console.WriteLine(data.ToString("dd/MM/yyyy") + " - " + evento.Titolo);
+        }
     }
 }

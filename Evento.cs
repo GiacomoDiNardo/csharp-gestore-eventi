@@ -16,7 +16,7 @@ public class Evento
         {
             if (value == "" || value == null)
             {
-                throw new GestoreEventiException("Titolo non valido");
+                throw new GestoreEventiException("Titolo non valido, reinserisci l'evento");
             }
             else
             {
@@ -34,7 +34,7 @@ public class Evento
         {
             if (DateTime.Compare(oggi, value) > 0)
             {
-                throw new GestoreEventiException("Questo evento è già passato");
+                throw new GestoreEventiException("Questo evento è già passato, reinserisci l'evento");
             }
 
             _data = value;
@@ -50,7 +50,7 @@ public class Evento
         {
             if (value <= 0)
             {
-                throw new GestoreEventiException("Capienza non valida");
+                throw new GestoreEventiException("Capienza non valida, reinserisci l'evento");
             }
             _capienza = value;
         }

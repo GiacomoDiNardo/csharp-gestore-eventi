@@ -26,7 +26,7 @@ while ( programma.NumeroEventi() < numEventi)
     {
         Evento evento = new Evento(titoloEvento, dataEvento, capienzaEvento);
 
-        programma.AggiungiEvento(evento);
+        programma.AggiungiEvento(evento, programma.Eventi);
     }
     catch (GestoreEventiException e)
     {
@@ -39,6 +39,12 @@ while ( programma.NumeroEventi() < numEventi)
 Console.WriteLine("Il programma ha {0} eventi", programma.NumeroEventi());
 Console.WriteLine();
 programma.StampaProgramma();
+Console.WriteLine();
+Console.WriteLine("inserisci una data in formato (yy/MM/yyy)");
+DateTime dataUtente = Convert.ToDateTime(Console.ReadLine());
+List<Evento> listaEventiData = new List<Evento>();
+programma.InDataEventi(dataUtente, listaEventiData);
+
 
 
 
