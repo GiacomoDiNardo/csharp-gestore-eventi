@@ -14,9 +14,9 @@ public class Evento
         }
         set
         {
-            if (_titolo == "" || _titolo == null)
+            if (value == "" || value == null)
             {
-                throw new TitoloException("Titolo non valido");
+                throw new GestoreEventiException("Titolo non valido");
             }
             else
             {
@@ -32,9 +32,9 @@ public class Evento
         }
         set
         {
-            if (DateTime.Compare(oggi, _data) > 0)
+            if (DateTime.Compare(oggi, value) > 0)
             {
-                throw new DataPassataException("Questo evento è già passato");
+                throw new GestoreEventiException("Questo evento è già passato");
             }
 
             _data = value;
@@ -48,9 +48,9 @@ public class Evento
         }
         private set
         {
-            if (_capienza <= 0)
+            if (value <= 0)
             {
-                throw new CapienzaException("Capienza non valida");
+                throw new GestoreEventiException("Capienza non valida");
             }
             _capienza = value;
         }
@@ -59,12 +59,9 @@ public class Evento
 
     public Evento(string titolo, DateTime data, int capienza)
     {
-        _titolo = titolo;
-        Titolo = _titolo;
-        _data = data;
-        Data = _data;
-        _capienza = capienza;
-        Capienza = _capienza;
+        Titolo = titolo;
+        Data = data;
+        Capienza = capienza;
         PostiPrenotati = 0;
     }
 
