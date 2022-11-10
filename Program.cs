@@ -39,11 +39,17 @@ while ( programma.NumeroEventi() < numEventi)
 Console.WriteLine("Il programma ha {0} eventi", programma.NumeroEventi());
 Console.WriteLine();
 programma.StampaProgramma();
+
 Console.WriteLine();
+
 Console.WriteLine("inserisci una data in formato (yy/MM/yyy)");
+Console.WriteLine();
 DateTime dataUtente = Convert.ToDateTime(Console.ReadLine());
 List<Evento> listaEventiData = new List<Evento>();
+Console.WriteLine("in data {0} ci sono questi eventi:", dataUtente.ToString("dd/MM/yyyy"));
 programma.InDataEventi(dataUtente, listaEventiData);
+programma.SvuotaLista(programma.Eventi);
+programma.SvuotaLista(listaEventiData);
 
 
 

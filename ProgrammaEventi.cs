@@ -26,7 +26,7 @@ public class ProgrammaEventi
             }
         }
 
-        StampaLista(lista, data);
+        StampaInConsole(lista);
         return lista;
     }
 
@@ -43,23 +43,14 @@ public class ProgrammaEventi
         return Eventi.Count;
     }
 
-    public void SvuotaLista()
+    public void SvuotaLista(List<Evento> eventi)
     {
-        Eventi.Clear();
+        eventi.Clear();
     }
 
     public void StampaProgramma()
     {
         Console.WriteLine("{0} Programma evento:", Titolo);
         StampaInConsole(Eventi);
-    }
-
-    public static void StampaLista(List<Evento> lista, DateTime data)
-    {
-        Console.WriteLine("in data {0} ci sono questi eventi:", data.ToString("dd/MM/yyyy"));
-        foreach (Evento evento in lista)
-        {
-            Console.WriteLine(data.ToString("dd/MM/yyyy") + " - " + evento.Titolo);
-        }
     }
 }
